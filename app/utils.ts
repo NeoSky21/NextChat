@@ -281,14 +281,16 @@ export function getMessageImages(message: RequestMessage): string[] {
 }
 
 export function isVisionModel(model: string) {
-  const visionModels = useAccessStore.getState().visionModels;
-  const envVisionModels = visionModels?.split(",").map((m) => m.trim());
-  if (envVisionModels?.includes(model)) {
-    return true;
-  }
+  const storeModels = useAccessStore.getState().visionModels ?? "";
+  const envModels = process.env.VISION_MODELS ?? "";
+  const combined = [storeModels, envModels].filter(Boolean).join(",");
+  const customList = combined.split(",").map((m) => m.trim()).filter(Boolean);
+
+  if (customList.includes(model)) return true;
+
   return (
-    !EXCLUDE_VISION_MODEL_REGEXES.some((regex) => regex.test(model)) &&
-    VISION_MODEL_REGEXES.some((regex) => regex.test(model))
+      !EXCLUDE_VISION_MODEL_REGEXES.some((regex) => regex.test(model)) &&
+      VISION_MODEL_REGEXES.some((regex) => regex.test(model))
   );
 }
 
@@ -439,7 +441,7 @@ export function getOperationId(operation: {
   method: string;
   path: string;
 }) {
-  // pattern '^[a-zA-Z0-9_-]+$'
+  // pattern '^[a-zA-Z0-9_-]+
   return (
     operation?.operationId ||
     `${operation.method.toUpperCase()}${operation.path.replaceAll("/", "_")}`

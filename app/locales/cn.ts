@@ -303,7 +303,7 @@ const cn = {
     Usage: {
       Title: "余额查询",
       SubTitle(used: any, total: any) {
-        return `本月已使用 $${used}，订阅总额 $${total}`;
+        return `本月已使用 ${used}，订阅总额 ${total}`;
       },
       IsChecking: "正在检查…",
       Check: "重新检查",
@@ -537,6 +537,10 @@ const cn = {
       CustomModel: {
         Title: "自定义模型名",
         SubTitle: "增加自定义模型可选项，使用英文逗号隔开",
+      },
+      VisionModels: {
+        Title: "视觉模型",
+        SubTitle: "指定支持视觉能力的模型，使用英文逗号隔开（会与内置规则合并）",
       },
       AI302: {
         ApiKey: {

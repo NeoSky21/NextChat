@@ -1913,6 +1913,25 @@ export function Settings() {
               }
             ></input>
           </ListItem>
+
+          <ListItem
+              title={Locale.Settings.Access.VisionModels.Title}
+              subTitle={Locale.Settings.Access.VisionModels.SubTitle}
+              vertical={true}
+          >
+            <input
+                aria-label={Locale.Settings.Access.VisionModels.Title}
+                style={{ width: "100%", maxWidth: "unset", textAlign: "left" }}
+                type="text"
+                value={accessStore.visionModels}
+                placeholder="model1,model2,model3"
+                onChange={(e) =>
+                    accessStore.update(
+                        (access) => (access.visionModels = e.currentTarget.value),
+                    )
+                }
+            ></input>
+          </ListItem>
         </List>
 
         <List>

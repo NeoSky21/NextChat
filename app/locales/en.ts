@@ -307,7 +307,7 @@ const en: LocaleType = {
     Usage: {
       Title: "Account Balance",
       SubTitle(used: any, total: any) {
-        return `Used this month $${used}, subscription $${total}`;
+        return `Used this month ${used}, subscription ${total}`;
       },
       IsChecking: "Checking...",
       Check: "Check",
@@ -521,6 +521,10 @@ const en: LocaleType = {
       CustomModel: {
         Title: "Custom Models",
         SubTitle: "Custom model options, seperated by comma",
+      },
+      VisionModels: {
+        Title: "Vision Models",
+        SubTitle: "Specify vision-capable models, comma-separated (merged with built-in rules)",
       },
       Google: {
         ApiKey: {
